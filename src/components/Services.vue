@@ -2,7 +2,10 @@
   <section class="services">
     <div class="container">
       <div class="services__wrap">
-        <h2><span class="orange-line"></span> Наши Услуги</h2>
+        <h2 v-if="this.$route.path === '/'">
+          <span class="orange-line"></span> Наши Услуги
+        </h2>
+        <Breadcrumbs v-else :cat="cat" />
         <p>
           Мы оказываем услуги как по строительству, ремонту, эксплуатации дорог
           и искусственных сооружений, благоустройству территорий, так и
@@ -13,7 +16,13 @@
           адекватную ценовую политику.
         </p>
         <div class="services-items" v-if="services">
-          <div class="services-item" v-for="item in services" :key="item.id">
+          <router-link
+            tag="div"
+            :to="`/services/${item.slug}`"
+            class="services-item"
+            v-for="item in services"
+            :key="item.id"
+          >
             <div class="services-item-text">
               <h3>{{ item.title }}</h3>
               <p>{{ item.subtext }}</p>
@@ -21,9 +30,13 @@
             <div class="services-item-img">
               <img :src="item.icon" alt="" />
             </div>
-          </div>
+          </router-link>
         </div>
-        <router-link class="orange-btn" tag="button" to="/"
+        <router-link
+          v-if="this.$route.path === '/'"
+          class="orange-btn"
+          tag="button"
+          to="/services"
           >Подробнее</router-link
         >
       </div>
@@ -33,8 +46,18 @@
 
 <script>
 import { mapGetters } from "vuex";
+import Breadcrumbs from "./ui/Breadcrumbs.vue";
 export default {
+  components: { Breadcrumbs },
   name: "Services",
+  data() {
+    return {
+      cat: {
+        slug: "/services",
+        text: "Услуги",
+      },
+    };
+  },
   computed: {
     ...mapGetters({
       services: "info/getServices",
