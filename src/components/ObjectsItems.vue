@@ -36,15 +36,6 @@
               <swiper-slide class="objects-page-slide">
                 <img src="../assets/img/objects.png" alt="" />
               </swiper-slide>
-              <swiper-slide class="objects-page-slide">
-                <img src="../assets/img/objects.png" alt="" />
-              </swiper-slide>
-              <swiper-slide class="objects-page-slide">
-                <img src="../assets/img/objects.png" alt="" />
-              </swiper-slide>
-              <swiper-slide class="objects-page-slide">
-                <img src="../assets/img/objects.png" alt="" />
-              </swiper-slide>
             </swiper>
             <div class="swiper-prev">
               <img src="../assets/img/swiper-left-arrow.svg" alt="" />
