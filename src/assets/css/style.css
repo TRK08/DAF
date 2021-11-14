@@ -259,10 +259,14 @@ button.transparent-btn:hover {
   height: 40px;
 }
 
-.mobile-menu-links {
+.mobile-menu-body {
   display: flex;
   flex-direction: column;
   align-items: center;
+  overflow: auto;
+}
+
+.mobile-menu-links {
   margin: 50px 0;
 }
 
@@ -281,7 +285,6 @@ button.transparent-btn:hover {
 
 .mobile-contacts {
   display: flex;
-  align-items: center;
   flex-direction: column;
 }
 
@@ -310,7 +313,6 @@ button.transparent-btn:hover {
 
 .mobile-menu__wrap button {
   display: block;
-  margin: 0 auto;
   background-color: var(--orange);
   margin-top: 50px;
 }
@@ -487,7 +489,7 @@ button.transparent-btn:hover {
 
 .vehicles__wrap button {
   display: block;
-  margin: 0 auto;
+  margin: 30px auto 0;
 }
 
 /* QUESTIONS */
@@ -1091,7 +1093,7 @@ button.transparent-btn:hover {
 	}
 
 	.partners-slider {
-		margin-top: 30px;
+		margin: 30px 0 40px;
 	}
 
 	.footer__wrap {
@@ -1239,16 +1241,37 @@ button.transparent-btn:hover {
     grid-template-columns: 1fr;
   }
 
-  .mobile-menu-links, .mobile-contacts {
+  .mobile-menu-body {
     align-items: flex-start;
+    max-height: 85vh;
+  }
+
+  .mobile-menu-links {
+    margin: 25px 0;
   }
 
   .mobile-menu__wrap button {
-    margin-left: 0;
+    margin-top: 25px;
+  }
+
+  .services, .objects {
+    padding-top: 40px;
+  }
+
+  .contacts {
+    padding-bottom: 40px;
+  }
+
+  .vehicles, .questions {
+    margin-bottom: 40px;
   }
 
 }
 @media (max-width: 390px) {
+  h1 {
+    font-size: 35px;
+    line-height: 42px;
+  }
 	
 }
 @media (max-width: 320px) {

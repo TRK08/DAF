@@ -55,31 +55,37 @@
                 alt=""
               />
             </div>
-            <ul class="mobile-menu-links" v-if="menu">
-              <router-link
-                class="mobile-menu-item"
-                tag="li"
-                :to="`/${item.slug}`"
-                v-for="item in menu"
-                :key="item.ID"
-                >{{ item.title }}
-              </router-link>
-            </ul>
-            <div class="mobile-contacts" v-if="contacts">
-              <div class="mobile-contacts-item">
-                <img src="../../assets/img/phone-icon.svg" alt="" />
-                <a :href="`tel:${contacts.fphone}`"> {{ contacts.fphone }} </a>
+            <div class="mobile-menu-body">
+              <ul class="mobile-menu-links" v-if="menu">
+                <router-link
+                  class="mobile-menu-item"
+                  tag="li"
+                  :to="`/${item.slug}`"
+                  v-for="item in menu"
+                  :key="item.ID"
+                  >{{ item.title }}
+                </router-link>
+              </ul>
+              <div class="mobile-contacts" v-if="contacts">
+                <div class="mobile-contacts-item">
+                  <img src="../../assets/img/phone-icon.svg" alt="" />
+                  <a :href="`tel:${contacts.fphone}`">
+                    {{ contacts.fphone }}
+                  </a>
+                </div>
+                <div class="mobile-contacts-item">
+                  <img src="../../assets/img/phone-icon.svg" alt="" />
+                  <a :href="`tel:${contacts.phone}`"> {{ contacts.phone }} </a>
+                </div>
+                <div class="mobile-contacts-item">
+                  <img src="../../assets/img/email-icon.svg" alt="" />
+                  <a :href="`mailto:${contacts.email}`">
+                    {{ contacts.email }}
+                  </a>
+                </div>
               </div>
-              <div class="mobile-contacts-item">
-                <img src="../../assets/img/phone-icon.svg" alt="" />
-                <a :href="`tel:${contacts.phone}`"> {{ contacts.phone }} </a>
-              </div>
-              <div class="mobile-contacts-item">
-                <img src="../../assets/img/email-icon.svg" alt="" />
-                <a :href="`mailto:${contacts.email}`"> {{ contacts.email }} </a>
-              </div>
+              <button>Задать вопрос</button>
             </div>
-            <button>Задать вопрос</button>
           </div>
         </div>
       </div>

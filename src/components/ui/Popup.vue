@@ -116,6 +116,7 @@ export default {
   text-align: center;
   position: relative;
   overflow: hidden;
+  margin: 15px;
 }
 
 .popup-close {
@@ -192,6 +193,13 @@ export default {
   font-weight: 500;
   font-size: 16px;
   line-height: 20px;
+}
+
+.popup-form__item select {
+  appearance: none;
+  background-image: url("../../assets/img/down-arrow-icon.svg");
+  background-repeat: no-repeat;
+  background-position: calc(100% - 18px) 50%;
 }
 
 .popup-block form button {
