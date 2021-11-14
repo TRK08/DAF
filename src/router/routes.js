@@ -5,6 +5,8 @@ import SingleServices from '../pages/SingleServices.vue'
 import Objects from '../pages/Objects.vue'
 import AboutCompany from '../pages/AboutCompany.vue'
 import Contacts from '../pages/Contacts.vue'
+import Technique from '../pages/Technique.vue'
+import Vacancies from '../pages/Vacancies.vue'
 
 const routes = [
 	{
@@ -31,6 +33,14 @@ const routes = [
 	{
 		path: '/contacts',
 		component: Contacts,
+	},
+	{
+		path: '/technique',
+		component: Technique,
+	},
+	{
+		path: '/vacancies',
+		component: Vacancies,
 	},
 	// {
 	// 	path: '*',

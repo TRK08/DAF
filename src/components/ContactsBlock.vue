@@ -14,8 +14,8 @@
             <h3>Телефоны</h3>
             <span
               ><img src="../assets/img/phone-icon.svg" alt="" />
-              <a :href="`tel:${contacts.phone}`">
-                {{ contacts.phone }}
+              <a :href="`tel:${contacts.fphone}`">
+                {{ contacts.fphone }}
               </a></span
             >
             <span

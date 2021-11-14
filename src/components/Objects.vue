@@ -94,16 +94,6 @@
           >
             <span> {{ item.name }} </span>
           </router-link>
-          <router-link
-            tag="div"
-            to="/"
-            class="object-item"
-            v-for="item in objects"
-            :key="item.id"
-            :style="{ 'background-image': 'url(' + item.img + ')' }"
-          >
-            <span> {{ item.name }} </span>
-          </router-link>
         </div>
       </div>
     </div>

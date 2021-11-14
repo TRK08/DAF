@@ -1,7 +1,7 @@
 <template>
-  <div class="contacts">
-    <Banner :img="banner" text="Контакты" />
-    <ContactsBlock />
+  <div>
+    <Banner :img="banner" text="Вакансии" />
+    <VacanciesBlock />
     <Questions />
     <OurPartners />
   </div>
@@ -11,16 +11,12 @@
 import Questions from "../components/Questions.vue";
 import OurPartners from "../components/OurPartners.vue";
 import Banner from "../components/ui/Banner.vue";
-import ContactsBlock from "../components/ContactsBlock.vue";
+import VacanciesBlock from "../components/VacanciesBlock.vue";
 export default {
-  components: { Questions, OurPartners, Banner, ContactsBlock },
-  name: "Contacts",
+  name: "Vacancies",
+  components: { Questions, OurPartners, Banner, VacanciesBlock },
   data() {
     return {
-      cat: {
-        slug: "/contacts",
-        text: "Контакты",
-      },
       banner: require("../assets/img/objects-banner.png"),
     };
   },

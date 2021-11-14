@@ -24,6 +24,7 @@ export default {
   background-image: url("../assets/img/hero-bg.png");
   background-size: cover;
   background-repeat: no-repeat;
+  background-position: center;
   width: 100%;
 }
 

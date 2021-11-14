@@ -3,6 +3,8 @@
     <Header />
     <router-view></router-view>
     <Footer />
+
+    <Popup />
   </div>
 </template>
 
@@ -12,9 +14,10 @@ import "./assets/css/style.css";
 import axios from "axios";
 import Header from "./components/ui/Header.vue";
 import Footer from "./components/ui/Footer.vue";
+import Popup from "./components/ui/Popup.vue";
 
 export default {
-  components: { Header, Footer },
+  components: { Header, Footer, Popup },
   data() {
     return {};
   },

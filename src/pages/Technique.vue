@@ -1,7 +1,7 @@
 <template>
-  <div class="contacts">
-    <Banner :img="banner" text="Контакты" />
-    <ContactsBlock />
+  <div>
+    <Banner :img="banner" text="Спецтехника" />
+    <TechniqueBlock />
     <Questions />
     <OurPartners />
   </div>
@@ -11,16 +11,13 @@
 import Questions from "../components/Questions.vue";
 import OurPartners from "../components/OurPartners.vue";
 import Banner from "../components/ui/Banner.vue";
-import ContactsBlock from "../components/ContactsBlock.vue";
+import TechniqueBlock from "../components/TechniqueBlock.vue";
+import { mapGetters } from "vuex";
 export default {
-  components: { Questions, OurPartners, Banner, ContactsBlock },
-  name: "Contacts",
+  name: "Technique",
+  components: { Questions, OurPartners, Banner, TechniqueBlock },
   data() {
     return {
-      cat: {
-        slug: "/contacts",
-        text: "Контакты",
-      },
       banner: require("../assets/img/objects-banner.png"),
     };
   },

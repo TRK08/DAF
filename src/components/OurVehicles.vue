@@ -13,7 +13,7 @@
             </div>
           </div>
         </router-link>
-        <router-link class="orange-btn" tag="button" to="/"
+        <router-link class="orange-btn" tag="button" to="/technique"
           >Подробнее</router-link
         >
       </div>

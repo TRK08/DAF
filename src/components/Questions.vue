@@ -4,7 +4,9 @@
       <div class="questions__wrap">
         <h2>Остались вопросы?</h2>
         <p>Задайте их нашим менеджерам!</p>
-        <button class="transparent-btn">Задать вопрос</button>
+        <button class="transparent-btn" @click="setMode(true)">
+          Задать вопрос
+        </button>
         <div class="questions-man">
           <img src="../assets/img/questions-man.png" alt="" />
         </div>
@@ -14,8 +16,14 @@
 </template>
 
 <script>
+import { mapActions } from "vuex";
 export default {
   name: "Questions",
+  methods: {
+    ...mapActions({
+      setMode: "popup/TAKE_POPUP_MODE",
+    }),
+  },
 };
 </script>
 
