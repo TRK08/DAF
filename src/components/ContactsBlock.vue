@@ -59,7 +59,7 @@ export default {
     return {
       cat: {
         slug: "/contacts",
-        text: "Контакты",
+        text: "kontakty",
       },
       banner: require("../assets/img/objects-banner.png"),
       coords: [59.575128, 30.144389],

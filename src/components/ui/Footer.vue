@@ -19,7 +19,12 @@
         <div class="footer-menu" v-if="menu">
           <h3>Меню</h3>
           <ul>
-            <router-link v-for="item in menu" :key="item.id" tag="li" to="/">
+            <router-link
+              v-for="item in menu"
+              :key="item.id"
+              tag="li"
+              :to="`/${item.slug}`"
+            >
               {{ item.title }}
             </router-link>
           </ul>

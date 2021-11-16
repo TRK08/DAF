@@ -129,7 +129,7 @@ export default {
 }
 
 .popup-orange-line.loading {
-  background: linear-gradient(90deg, var(--white) 50%, var(--orange) 50%);
+  background-image: linear-gradient(90deg, var(--white) 50%, var(--orange) 50%);
   background-size: 50px;
   background-repeat: repeat-x;
   transform: skewX(135deg);

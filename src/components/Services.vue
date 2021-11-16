@@ -18,7 +18,7 @@
         <div class="services-items" v-if="services">
           <router-link
             tag="div"
-            :to="`/services/${item.slug}`"
+            :to="`/uslugi/${item.slug}`"
             class="services-item"
             v-for="item in services"
             :key="item.id"
@@ -36,7 +36,7 @@
           v-if="this.$route.path === '/'"
           class="orange-btn"
           tag="button"
-          to="/services"
+          to="/uslugi"
           >Подробнее</router-link
         >
       </div>
