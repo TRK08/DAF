@@ -14,24 +14,24 @@ const routes = [
 		component: Home
 	},
 	{
-		path: '/services',
+		path: '/uslugi',
 		component: Services
 	},
 	{
-		path: '/services/:id',
+		path: '/uslugi/:id',
 		component: SingleServices,
 		props: true
 	},
 	{
-		path: '/objects',
+		path: '/obekty',
 		component: Objects,
 	},
 	{
-		path: '/about',
+		path: '/o-kompanii',
 		component: AboutCompany,
 	},
 	{
-		path: '/contacts',
+		path: '/kontakty',
 		component: Contacts,
 	},
 	{
@@ -39,7 +39,7 @@ const routes = [
 		component: Technique,
 	},
 	{
-		path: '/vacancies',
+		path: '/vakansii',
 		component: Vacancies,
 	},
 	// {
