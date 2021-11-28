@@ -1,54 +1,14 @@
 <template>
   <section class="vacancies">
     <Breadcrumbs :cat="cat" />
-    <div class="vacancies__wrap">
-      <div class="vacancies-item">
-        <div class="container">
-          <div class="vacancies-item__wrap">
-            <div class="vacancies-item-info">
-              <span class="orange-line"></span>
-              <h3>Производитель работ</h3>
-              <div class="vacancies-item-block">
-                <h4>Профессиональные требования:</h4>
-                <ul>
-                  <li>Организация и планирование строительства.</li>
-                  <li>Вынос на местности и разбивка территории</li>
-                  <li>Рубка и корчевание леса и мелколесья.</li>
-                  <li>
-                    Устройство подстилающих слоев основания конструкции дорожной
-                    одежды из песка, ПГС, щебня, ЩПС (согласно проекту)
-                  </li>
-                  <li>
-                    Укладка слоев асфальтобетонного покрытия всех типов и марок
-                    (согласно проекту).
-                  </li>
-                </ul>
-              </div>
-              <div class="vacancies-item-block">
-                <h4>Обязанности:</h4>
-                <ul>
-                  <li>Организация и планирование строительства.</li>
-                  <li>Вынос на местности и разбивка территории</li>
-                  <li>Рубка и корчевание леса и мелколесья.</li>
-                  <li>
-                    Устройство подстилающих слоев основания конструкции дорожной
-                    одежды из песка, ПГС, щебня, ЩПС (согласно проекту)
-                  </li>
-                </ul>
-              </div>
-              <div class="vacancies-item-block">
-                <h4>Условия:</h4>
-                <ul>
-                  <li>Организация и планирование строительства.</li>
-                  <li>Вынос на местности и разбивка</li>
-                </ul>
-              </div>
-              <button>Откликнуться</button>
-            </div>
-            <div class="vacancies-item-img">
-              <img src="../assets/img/objects.png" alt="" />
-            </div>
+    <div class="container">
+      <div class="vacancies__wrap">
+        <div class="vacancies-item" v-for="item in vacancies" :key="item.id">
+          <div class="img">
+            <img src="../assets/img/vacancies.svg" alt="" />
           </div>
+          <h3>{{ item.name }}</h3>
+          <button @click="respond(item.name)">Откликнуться</button>
         </div>
       </div>
     </div>
@@ -56,6 +16,7 @@
 </template>
 
 <script>
+import { mapGetters, mapActions } from "vuex";
 import Breadcrumbs from "./ui/Breadcrumbs.vue";
 export default {
   components: { Breadcrumbs },
@@ -67,6 +28,32 @@ export default {
         text: "Вакансии",
       },
     };
+  },
+  methods: {
+    ...mapActions({
+      setMode: "popup/TAKE_POPUP_MODE",
+    }),
+    respond(name) {
+      let list = this.vacancies.map((vac) => {
+        if (name === vac.name) {
+          return {
+            title: vac.name,
+            isActive: true,
+          };
+        } else {
+          return {
+            title: vac.name,
+            isActive: false,
+          };
+        }
+      });
+      this.setMode({ mode: true, data: list });
+    },
+  },
+  computed: {
+    ...mapGetters({
+      vacancies: "info/getVacancies",
+    }),
   },
 };
 </script>

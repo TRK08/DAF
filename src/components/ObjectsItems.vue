@@ -1,8 +1,20 @@
 <template>
-  <section class="objects-page-items">
-    <Breadcrumbs :cat="cat" />
+  <section class="objects-page-items" v-if="objects">
+    <Breadcrumbs
+      :cat="cat"
+      :class="{ greyBreadcrubms: objects.length === 2 }"
+    />
     <div class="objects-page-items__wrap">
-      <div class="objects-page-item">
+      <div
+        class="objects-page-item"
+        :class="{
+          grey:
+            (i % 2 !== 0 && objects.length > 2) ||
+            (i === 0 && objects.length === 2),
+        }"
+        v-for="(object, i) in objects"
+        :key="object.id"
+      >
         <div class="container">
           <span class="orange-line"></span>
           <h3>
@@ -10,21 +22,13 @@
             федерального значения
           </h3>
           <div class="objects-page-item-points">
-            <div class="objects-page-item-point">
+            <div
+              class="objects-page-item-point"
+              v-for="(item, i) in object.objects"
+              :key="i"
+            >
               <img src="../assets/img/point-icon.svg" alt="" />
-              <span>Сортавала» А-121</span>
-            </div>
-            <div class="objects-page-item-point">
-              <img src="../assets/img/point-icon.svg" alt="" />
-              <span>Сортавала» А-121</span>
-            </div>
-            <div class="objects-page-item-point">
-              <img src="../assets/img/point-icon.svg" alt="" />
-              <span>Сортавала» А-121</span>
-            </div>
-            <div class="objects-page-item-point">
-              <img src="../assets/img/point-icon.svg" alt="" />
-              <span>Сортавала» А-121</span>
+              <span>{{ item.nazvanie }}</span>
             </div>
           </div>
           <div class="objects-page-slider__wrap">
@@ -33,8 +37,12 @@
               ref="mySwiper"
               :options="swiperOptions"
             >
-              <swiper-slide class="objects-page-slide">
-                <img src="../assets/img/objects.png" alt="" />
+              <swiper-slide
+                class="objects-page-slide"
+                v-for="img in object.gallery"
+                :key="img"
+              >
+                <img :src="img" alt="" />
               </swiper-slide>
             </swiper>
             <div class="swiper-prev">
@@ -52,6 +60,7 @@
 
 <script>
 import Breadcrumbs from "./ui/Breadcrumbs.vue";
+import { mapGetters } from "vuex";
 export default {
   components: { Breadcrumbs },
   name: "ObjectsItems",
@@ -69,11 +78,24 @@ export default {
           nextEl: ".swiper-next",
           prevEl: ".swiper-prev",
         },
-        breakpoints: {},
+        breakpoints: {
+          991: {
+            slidesPerView: 3,
+          },
+          672: {
+            slidesPerView: 2,
+          },
+          320: {
+            slidesPerView: 1,
+          },
+        },
       },
     };
   },
   computed: {
+    ...mapGetters({
+      objects: "info/getObjects",
+    }),
     swiper() {
       return this.$refs.mySwiper.$swiper;
     },
@@ -82,4 +104,8 @@ export default {
 </script>
 
 <style scoped>
+.objects-page-item.grey,
+.greyBreadcrubms {
+  background-color: var(--grey);
+}
 </style>

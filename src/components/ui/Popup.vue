@@ -1,10 +1,10 @@
 <template>
-  <div class="popup" v-if="mode" @click="setMode(null)">
+  <div class="popup" v-if="mode" @click="setMode({ mode: null })">
     <div class="popup-block" @click.stop="">
       <span class="popup-orange-line" :class="{ loading: isLoading }"></span>
       <img
         class="popup-close"
-        @click="setMode(null)"
+        @click="setMode({ mode: null })"
         src="../../assets/img/close-icon.svg"
       />
       <h3>Наши менеджеры ответят в течении 15 минут</h3>
@@ -27,13 +27,19 @@
         </div>
         <div class="popup-form__item">
           <label for="theme">Тема:</label>
-          <select name="" id="theme">
-            <option value="Аренда спецтехники">Аренда спецтехники</option>
-            <option value="Аренда спецтехники">Аренда спецтехники</option>
+          <select name="" id="theme" v-model="theme">
+            <option
+              v-for="item in popupData"
+              :key="item.title"
+              :value="item.title"
+              :selected="item.isActive"
+            >
+              {{ item.title }}
+            </option>
           </select>
         </div>
         <button
-          :disabled="!name || !phone"
+          :disabled="!name || phone.length < 18"
           type="submit"
           @click="isLoading = !isLoading"
         >
@@ -48,6 +54,7 @@
 <script>
 import { mapGetters, mapActions } from "vuex";
 import { required, minLength } from "vuelidate/lib/validators";
+import axios from "axios";
 export default {
   name: "Popup",
   data() {
@@ -65,7 +72,7 @@ export default {
     },
     phone: {
       required,
-      minLength: minLength(1),
+      minLength: minLength(12),
     },
   },
   watch: {
@@ -83,11 +90,42 @@ export default {
     }),
     sendForm() {
       console.log("send");
+      this.isLoading = true;
+      const emailData = {
+        cname: this.name,
+        cphone: this.phone,
+        csubject: this.theme,
+      };
+      const form = new FormData();
+      for (let field in emailData) {
+        form.append(field, emailData[field]);
+      }
+
+      axios
+        .post(
+          "https://daf.webink.site/wp-json/contact-form-7/v1/contact-forms/179/feedback",
+          form
+        )
+        .then((res) => {
+          this.name = "";
+          this.phone = "";
+          this.isLoading = false;
+        })
+        .catch((err) => {
+          console.log(err, "SEND MESSAGE ERR");
+        });
+    },
+  },
+  watch: {
+    popupData(val) {
+      let active = val.find((item) => item.isActive);
+      this.theme = active.title;
     },
   },
   computed: {
     ...mapGetters({
       mode: "popup/getPopupMode",
+      popupData: "popup/getPopupData",
     }),
   },
 };

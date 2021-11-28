@@ -3,6 +3,7 @@
     <div class="container">
       <div class="partners__wrap">
         <h2><span class="orange-line"></span>Наши партнеры и заказчики</h2>
+        <div class="swiper-pagination"></div>
         <swiper class="partners-slider" ref="mySwiper" :options="swiperOptions">
           <swiper-slide
             class="partners-slide"
@@ -28,9 +29,29 @@ export default {
         spaceBetween: 30,
         draggable: true,
         touchRatio: 1,
-        loop: false,
-        infinite: true,
-        breakpoints: {},
+        autoplay: true,
+        pagination: {
+          el: ".swiper-pagination",
+          type: "bullets",
+          clickable: true,
+        },
+        breakpoints: {
+          991: {
+            slidesPerView: 4,
+          },
+          768: {
+            slidesPerView: 3,
+          },
+          512: {
+            slidesPerView: 3,
+          },
+          390: {
+            slidesPerView: 2,
+          },
+          320: {
+            slidesPerView: 1,
+          },
+        },
       },
     };
   },

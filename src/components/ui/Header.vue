@@ -105,13 +105,13 @@ export default {
   watch: {
     $route(to, from) {
       this.isOpen = false;
-      document.body.style.overflowY = "auto";
+      document.body.style.overflow = "auto";
     },
     isOpen(val) {
       if (val) {
-        document.body.style.overflowY = "hidden";
+        document.body.style.overflow = "hidden";
       } else {
-        document.body.style.overflowY = "auto";
+        document.body.style.overflow = "auto";
       }
     },
   },

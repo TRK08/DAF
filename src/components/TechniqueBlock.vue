@@ -26,27 +26,33 @@
         <span class="orange-line"></span>
         <h3>Каталог техники</h3>
         <div class="technique-catalog-tabs">
-          <button>Асфальтовые катки</button>
-          <button>Дорожная фреза</button>
-          <button>Самосвалы</button>
-          <button>Бульдозер</button>
+          <button
+            :class="{ active: cat.isActive }"
+            v-for="cat in category"
+            :key="cat.term_id"
+            @click="changeCategory(cat.term_id)"
+          >
+            {{ cat.name }}
+          </button>
         </div>
         <div class="technique-catalog-items">
           <div
             class="technique-catalog-item"
-            v-for="item in technique"
+            v-for="item in singleCat(activeCatId)"
             :key="item.slug"
           >
             <img :src="item.img" alt="" />
             <div class="technique-catalog-item__info">
-              <h4>{{ item.name }}</h4>
-              <div class="technique-catalog-item-feauture">
-                <div v-for="info in item.specs" :key="info.nazvanie">
-                  <span> {{ info.nazvanie }} </span>
-                  <span> {{ info.znacheniya }} </span>
+              <div class="technique-catalog-item__text">
+                <h4>{{ item.name }}</h4>
+                <div class="technique-catalog-item-feauture">
+                  <div v-for="info in item.specs" :key="info.nazvanie">
+                    <span> {{ info.nazvanie }} </span>
+                    <span> {{ info.znacheniya }} </span>
+                  </div>
                 </div>
               </div>
-              <button>Арендовать</button>
+              <button @click="rentTechnique(item)">Арендовать</button>
             </div>
           </div>
         </div>
@@ -57,7 +63,7 @@
 
 <script>
 import Breadcrumbs from "./ui/Breadcrumbs.vue";
-import { mapGetters } from "vuex";
+import { mapGetters, mapActions } from "vuex";
 export default {
   components: { Breadcrumbs },
   name: "TechniqueBlock",
@@ -67,13 +73,55 @@ export default {
         slug: "/technique",
         text: "Спецтехника",
       },
+      activeCatId: 3,
+      filteredTechnique: [],
     };
+  },
+  methods: {
+    ...mapActions({
+      setMode: "popup/TAKE_POPUP_MODE",
+    }),
+    changeCategory(id) {
+      this.category.map((item) => {
+        item.isActive = item.term_id === id;
+        if (item.isActive) {
+          this.activeCatId = item.term_id;
+        }
+      });
+    },
+    rentTechnique(item) {
+      let list = this.singleCat(this.activeCatId).map((cat) => {
+        if (cat.name === item.name) {
+          return {
+            title: cat.name,
+            isActive: true,
+          };
+        } else {
+          return {
+            title: cat.name,
+            isActive: false,
+          };
+        }
+      });
+      this.setMode({ mode: true, data: list });
+    },
+  },
+  watch: {
+    category(val) {
+      val.map((item) => {
+        if (item.isActive) {
+          this.activeCatId = item.term_id;
+        }
+      });
+    },
   },
   computed: {
     ...mapGetters({
-      technique: "info/getVehicles",
+      category: "info/getVehiclesCategory",
+      singleCat: "info/getSingleCatTechnique",
     }),
   },
+  created() {},
 };
 </script>
 

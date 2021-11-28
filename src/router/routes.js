@@ -7,6 +7,8 @@ import AboutCompany from '../pages/AboutCompany.vue'
 import Contacts from '../pages/Contacts.vue'
 import Technique from '../pages/Technique.vue'
 import Vacancies from '../pages/Vacancies.vue'
+import Partners from '../pages/Partners.vue'
+import Clients from '../pages/Clients.vue'
 
 const routes = [
 	{
@@ -41,6 +43,14 @@ const routes = [
 	{
 		path: '/vakansii',
 		component: Vacancies,
+	},
+	{
+		path: '/partnery',
+		component: Partners,
+	},
+	{
+		path: '/zakazchiki',
+		component: Clients,
 	},
 	// {
 	// 	path: '*',

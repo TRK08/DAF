@@ -27,7 +27,10 @@ export default {
     this.$store.dispatch("info/LOAD_SERVICES");
     this.$store.dispatch("info/LOAD_OBJECTS");
     this.$store.dispatch("info/LOAD_PARTNERS");
+    this.$store.dispatch("info/LOAD_CUSTOMERS");
     this.$store.dispatch("info/LOAD_VEHICLES");
+    this.$store.dispatch("info/LOAD_VEHICLES_CATEGORY");
+    this.$store.dispatch("info/LOAD_VACANCIES");
   },
 };
 </script>

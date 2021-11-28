@@ -1,13 +1,15 @@
 <template>
   <section class="hero">
-    <video
-      src="src/assets/video/daf.mp4"
-      autoplay="autoplay"
-      loop="loop"
-      playsinline="playsinline"
-      muted="muted"
-      class="hero-bg-video"
-    ></video>
+    <div class="hero-bg-video__wrap">
+      <video
+        src="https://daf.webink.site/dist/daf.mov"
+        autoplay="autoplay"
+        loop="loop"
+        playsinline="playsinline"
+        muted="muted"
+        class="hero-bg-video"
+      ></video>
+    </div>
     <div class="container">
       <div class="hero__wrap">
         <h1>Строительство дорог и даже больше!</h1>
@@ -51,13 +53,17 @@ export default {
   margin: 15px 0 25px;
 }
 
-.hero-bg-video {
+.hero-bg-video__wrap {
   position: absolute;
-  right: 0;
-  bottom: 0;
   top: 50%;
   left: 50%;
   transform: translate(-50%, -50%);
+  width: 100vw;
+  height: 100vh;
+  overflow: hidden;
+}
+
+.hero-bg-video {
   min-width: 100%;
   min-height: 100%;
   height: 56.25vw;
@@ -65,6 +71,5 @@ export default {
   border-width: 0;
   outline-width: 0;
   z-index: 1;
-  object-fit: contain;
 }
 </style>

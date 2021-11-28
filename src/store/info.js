@@ -9,7 +9,10 @@ const info = {
     services: null,
     objects: null,
     partners: null,
-    vehicles: null
+    customers: null,
+    vehicles: null,
+    vehiclesCategory: null,
+    vacancies: null,
   },
   mutations: {
     SET_MENU(state, payload) {
@@ -30,8 +33,17 @@ const info = {
     SET_PARTNERS(state, payload) {
       state.partners = payload
     },
+    SET_CUSTOMERS(state, payload) {
+      state.customers = payload
+    },
     SET_VEHICLES(state, payload) {
       state.vehicles = payload
+    },
+    SET_VEHICLES_CATEGORY(state, payload) {
+      state.vehiclesCategory = payload
+    },
+    SET_VACANCIES(state, payload) {
+      state.vacancies = payload
     }
   },
   actions: {
@@ -71,11 +83,37 @@ const info = {
         console.log(err, 'load partners error');
       })
     },
+    LOAD_CUSTOMERS({ commit }) {
+      axios.get('https://daf.webink.site/wp-json/daf/v1/get/customers').then(res => {
+        commit('SET_CUSTOMERS', res.data.data)
+      }).catch(err => {
+        console.log(err, 'load partners error');
+      })
+    },
     LOAD_VEHICLES({ commit }) {
       axios.get('https://daf.webink.site/wp-json/daf/v1/get/technique').then(res => {
         commit('SET_VEHICLES', res.data.data)
       }).catch(err => {
         console.log(err, 'load vehicles error');
+      })
+    },
+    LOAD_VEHICLES_CATEGORY({ commit }) {
+      axios.get('https://daf.webink.site/wp-json/daf/v1/get/vtechnique').then(res => {
+        let result = res.data.data.map(item => {
+          item.isActive = false
+          return item
+        })
+        result[0].isActive = true
+        commit('SET_VEHICLES_CATEGORY', result)
+      }).catch(err => {
+        console.log(err, 'load vehicles category error');
+      })
+    },
+    LOAD_VACANCIES({ commit }) {
+      axios.get('https://daf.webink.site/wp-json/daf/v1/get/vacancy').then(res => {
+        commit("SET_VACANCIES", res.data.data)
+      }).catch(err => {
+        console.log(err, 'load vacancies error');
       })
     }
   },
@@ -98,8 +136,37 @@ const info = {
     getPartners(state) {
       return state.partners
     },
+    getCustomers(state) {
+      return state.customers
+    },
     getVehicles(state) {
       return state.vehicles
+    },
+    getVehiclesCategory(state) {
+      return state.vehiclesCategory
+    },
+    getVacancies(state) {
+      return state.vacancies
+    },
+    getSingleCatTechnique: (state) => (id) => {
+      if (state.vehicles) {
+        let arr = []
+        state.vehicles.filter((item) => {
+          if (item.cat) {
+            item.cat.forEach((cat) => {
+              if (cat.term_id === id) {
+                arr.push(item);
+              }
+            });
+          }
+        });
+        return arr
+      }
+    },
+    getSingleServices: (state) => (slug) => {
+      if (state.services) {
+        return state.services.find(item => item.slug === slug)
+      }
     }
   },
 }

@@ -1,7 +1,7 @@
 <template>
   <div class="single-services">
     <Banner :img="banner" text="Строительство дорог" />
-    <SingleServicesItem />
+    <SingleServicesItem :slug="id" />
     <Questions />
     <OurPartners />
   </div>
@@ -22,6 +22,7 @@ export default {
       banner: require("../assets/img/banner.png"),
     };
   },
+  created() {},
 };
 </script>
 

@@ -4,7 +4,10 @@
       <div class="questions__wrap">
         <h2>Остались вопросы?</h2>
         <p>Задайте их нашим менеджерам!</p>
-        <button class="transparent-btn" @click="setMode(true)">
+        <button
+          class="transparent-btn"
+          @click="setMode({ mode: true, data: popupData })"
+        >
           Задать вопрос
         </button>
         <div class="questions-man">
@@ -19,6 +22,20 @@
 import { mapActions } from "vuex";
 export default {
   name: "Questions",
+  data() {
+    return {
+      popupData: [
+        {
+          title: "Аренда техники",
+          isActive: false,
+        },
+        {
+          title: "Благоустройство территорий",
+          isActive: true,
+        },
+      ],
+    };
+  },
   methods: {
     ...mapActions({
       setMode: "popup/TAKE_POPUP_MODE",
