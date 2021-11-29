@@ -3,6 +3,7 @@
     <div class="hero-bg-video__wrap">
       <video
         src="https://daf.webink.site/dist/daf.mov"
+        poster="../assets/img/hero-bg.png"
         autoplay="autoplay"
         loop="loop"
         playsinline="playsinline"
@@ -31,7 +32,7 @@ export default {
 <style scoped>
 .hero {
   height: 100vh;
-  background-image: url("../assets/img/hero-bg.png");
+  /* background-image: url("../assets/img/hero-bg.png"); */
   background-size: cover;
   background-repeat: no-repeat;
   background-position: center;
@@ -68,6 +69,7 @@ export default {
   min-height: 100%;
   height: 56.25vw;
   width: 177.78vh;
+  object-fit: cover;
   border-width: 0;
   outline-width: 0;
   z-index: 1;

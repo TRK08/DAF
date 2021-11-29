@@ -58,8 +58,8 @@ export default {
   data() {
     return {
       cat: {
-        slug: "/contacts",
-        text: "kontakty",
+        slug: "/kontakty",
+        text: "Контакты",
       },
       banner: require("../assets/img/objects-banner.png"),
       coords: [59.575128, 30.144389],
