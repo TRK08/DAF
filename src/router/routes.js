@@ -37,7 +37,7 @@ const routes = [
 		component: Contacts,
 	},
 	{
-		path: '/technique',
+		path: '/tehnika',
 		component: Technique,
 	},
 	{

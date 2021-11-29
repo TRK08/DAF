@@ -1,9 +1,12 @@
 <template>
-  <div class="single-services-item" v-if="singleServices(slug)">
+  <div class="single-services-item" v-if="singleService">
     <div class="single-services-item__wrap">
       <div class="container">
-        <Breadcrumbs :cat="cat" :subcat="subcat" />
-        <div v-html="singleServices(slug).text"></div>
+        <Breadcrumbs
+          :cat="cat"
+          :subcat="{ slug: '', text: singleService.title }"
+        />
+        <div v-html="singleService.text"></div>
       </div>
       <div class="single-services-item__block">
         <div class="container">
@@ -15,7 +18,7 @@
                 :options="swiperOptions"
               >
                 <swiper-slide
-                  v-for="slide in singleServices(slug).gallery"
+                  v-for="slide in singleService.gallery"
                   :key="slide"
                   class="single-services-slide"
                 >
@@ -31,10 +34,10 @@
             </div>
             <div class="single-services-item__block-text">
               <span class="orange-line"></span>
-              <h3>{{ singleServices(slug).subtext }}</h3>
+              <h3>{{ singleService.subtext }}</h3>
               <ul>
                 <li
-                  v-for="(item, i) in singleServices(slug).sostavlyayushhie"
+                  v-for="(item, i) in singleService.sostavlyayushhie"
                   :key="i"
                 >
                   {{ item.tekst }}
@@ -59,17 +62,16 @@ export default {
       type: String,
       required: true,
     },
+    singleService: {
+      type: Object,
+      required: true,
+    },
   },
   data() {
     return {
-      services: null,
       cat: {
         slug: "/uslugi",
         text: "Услуги",
-      },
-      subcat: {
-        slug: "/uslugi",
-        text: "Строительство дорог",
       },
       swiperOptions: {
         slidesPerView: 1,
@@ -83,9 +85,6 @@ export default {
     };
   },
   computed: {
-    ...mapGetters({
-      singleServices: "info/getSingleServices",
-    }),
     swiper() {
       return this.$refs.mySwiper.$swiper;
     },

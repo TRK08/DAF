@@ -31,13 +31,10 @@ export default {
 
 <style scoped>
 .hero {
-  height: 100vh;
-  /* background-image: url("../assets/img/hero-bg.png"); */
-  background-size: cover;
-  background-repeat: no-repeat;
-  background-position: center;
+  background-color: var(--grey);
   width: 100vw;
-  height: 100vh;
+  height: 100%;
+  min-height: 100vh;
   overflow: hidden;
 }
 
@@ -60,7 +57,8 @@ export default {
   left: 50%;
   transform: translate(-50%, -50%);
   width: 100vw;
-  height: 100vh;
+  min-height: inherit;
+  height: 100%;
   overflow: hidden;
 }
 

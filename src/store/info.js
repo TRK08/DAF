@@ -103,7 +103,6 @@ const info = {
           item.isActive = false
           return item
         })
-        result[0].isActive = true
         commit('SET_VEHICLES_CATEGORY', result)
       }).catch(err => {
         console.log(err, 'load vehicles category error');
@@ -150,17 +149,21 @@ const info = {
     },
     getSingleCatTechnique: (state) => (id) => {
       if (state.vehicles) {
-        let arr = []
-        state.vehicles.filter((item) => {
-          if (item.cat) {
-            item.cat.forEach((cat) => {
-              if (cat.term_id === id) {
-                arr.push(item);
-              }
-            });
-          }
-        });
-        return arr
+        if (id) {
+          let arr = []
+          state.vehicles.filter((item) => {
+            if (item.cat) {
+              item.cat.forEach((cat) => {
+                if (cat.term_id === id) {
+                  arr.push(item);
+                }
+              });
+            }
+          });
+          return arr
+        } else {
+          return state.vehicles
+        }
       }
     },
     getSingleServices: (state) => (slug) => {

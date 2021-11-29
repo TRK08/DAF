@@ -27,6 +27,12 @@
         <h3>Каталог техники</h3>
         <div class="technique-catalog-tabs">
           <button
+            :class="{ active: !activeCatId }"
+            @click="changeCategory(null)"
+          >
+            Вся техника
+          </button>
+          <button
             :class="{ active: cat.isActive }"
             v-for="cat in category"
             :key="cat.term_id"
@@ -70,10 +76,10 @@ export default {
   data() {
     return {
       cat: {
-        slug: "/technique",
+        slug: "/tehnika",
         text: "Спецтехника",
       },
-      activeCatId: 3,
+      activeCatId: null,
       filteredTechnique: [],
     };
   },
@@ -82,12 +88,19 @@ export default {
       setMode: "popup/TAKE_POPUP_MODE",
     }),
     changeCategory(id) {
-      this.category.map((item) => {
-        item.isActive = item.term_id === id;
-        if (item.isActive) {
-          this.activeCatId = item.term_id;
-        }
-      });
+      if (id) {
+        this.category.map((item) => {
+          item.isActive = item.term_id === id;
+          if (item.isActive) {
+            this.activeCatId = item.term_id;
+          }
+        });
+      } else {
+        this.category.map((item) => {
+          item.isActive = false;
+        });
+        this.activeCatId = id;
+      }
     },
     rentTechnique(item) {
       let list = this.singleCat(this.activeCatId).map((cat) => {
@@ -107,13 +120,13 @@ export default {
     },
   },
   watch: {
-    category(val) {
-      val.map((item) => {
-        if (item.isActive) {
-          this.activeCatId = item.term_id;
-        }
-      });
-    },
+    // category(val) {
+    //   val.map((item) => {
+    //     if (item.isActive) {
+    //       this.activeCatId = item.term_id;
+    //     }
+    //   });
+    // },
   },
   computed: {
     ...mapGetters({
