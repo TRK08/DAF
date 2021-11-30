@@ -15,7 +15,7 @@
       <div class="hero__wrap">
         <h1>Строительство дорог и даже больше!</h1>
         <p>Надежность, качество, стабильность, профессионализм и уважение!</p>
-        <router-link class="transparent-btn" to="/" tag="button"
+        <router-link class="transparent-btn" to="/uslugi" tag="button"
           >Подробнее</router-link
         >
       </div>
