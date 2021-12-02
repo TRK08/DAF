@@ -1,4 +1,5 @@
 import axios from 'axios';
+import {API} from '../config'
 
 const info = {
   namespaced: true,
@@ -48,14 +49,14 @@ const info = {
   },
   actions: {
     LOAD_MENU({ commit }) {
-      axios.get('https://daf.webink.site/wp-json/daf/v1/get/menu?id=2').then(res => {
+      axios.get(`${API}get/menu?id=2`).then(res => {
         commit('SET_MENU', res.data.data)
       }).catch(err => {
         console.log(err, 'load menu error');
       })
     },
     LOAD_MAIN_INFO({ commit }) {
-      axios.get('https://daf.webink.site/wp-json/daf/v1/get/information').then(res => {
+      axios.get(`${API}get/information`).then(res => {
         commit('SET_CONTACTS', res.data.data.info)
         commit('SET_REASONS', res.data.data.main.fivep)
       }).catch(err => {
@@ -63,42 +64,42 @@ const info = {
       })
     },
     LOAD_SERVICES({ commit }) {
-      axios.get('https://daf.webink.site/wp-json/daf/v1/get/services').then(res => {
+      axios.get(`${API}get/services`).then(res => {
         commit('SET_SERVICES', res.data.data)
       }).catch(err => {
         console.log(err, 'load services error');
       })
     },
     LOAD_OBJECTS({ commit }) {
-      axios.get('https://daf.webink.site/wp-json/daf/v1/get/objects').then(res => {
+      axios.get(`${API}get/objects`).then(res => {
         commit("SET_OBJECTS", res.data.data)
       }).catch(err => {
         console.log(err, 'load objects error');
       })
     },
     LOAD_PARTNERS({ commit }) {
-      axios.get('https://daf.webink.site/wp-json/daf/v1/get/partners').then(res => {
+      axios.get(`${API}get/partners`).then(res => {
         commit('SET_PARTNERS', res.data.data)
       }).catch(err => {
         console.log(err, 'load partners error');
       })
     },
     LOAD_CUSTOMERS({ commit }) {
-      axios.get('https://daf.webink.site/wp-json/daf/v1/get/customers').then(res => {
+      axios.get(`${API}get/customers`).then(res => {
         commit('SET_CUSTOMERS', res.data.data)
       }).catch(err => {
         console.log(err, 'load partners error');
       })
     },
     LOAD_VEHICLES({ commit }) {
-      axios.get('https://daf.webink.site/wp-json/daf/v1/get/technique').then(res => {
+      axios.get(`${API}get/technique`).then(res => {
         commit('SET_VEHICLES', res.data.data)
       }).catch(err => {
         console.log(err, 'load vehicles error');
       })
     },
     LOAD_VEHICLES_CATEGORY({ commit }) {
-      axios.get('https://daf.webink.site/wp-json/daf/v1/get/vtechnique').then(res => {
+      axios.get(`${API}get/vtechnique`).then(res => {
         let result = res.data.data.map(item => {
           item.isActive = false
           return item
@@ -109,7 +110,7 @@ const info = {
       })
     },
     LOAD_VACANCIES({ commit }) {
-      axios.get('https://daf.webink.site/wp-json/daf/v1/get/vacancy').then(res => {
+      axios.get(`${API}get/vacancy`).then(res => {
         commit("SET_VACANCIES", res.data.data)
       }).catch(err => {
         console.log(err, 'load vacancies error');

@@ -53,8 +53,10 @@
 
 <script>
 import { mapGetters, mapActions } from "vuex";
+import {CF7} from '../../config'
 import { required, minLength } from "vuelidate/lib/validators";
 import axios from "axios";
+
 export default {
   name: "Popup",
   data() {
@@ -89,7 +91,7 @@ export default {
       setMode: "popup/TAKE_POPUP_MODE",
     }),
     sendForm() {
-      console.log("send");
+      alert("Письсо отправлено");
       this.isLoading = true;
       const emailData = {
         cname: this.name,
@@ -101,11 +103,7 @@ export default {
         form.append(field, emailData[field]);
       }
 
-      axios
-        .post(
-          "https://daf.webink.site/wp-json/contact-form-7/v1/contact-forms/179/feedback",
-          form
-        )
+      axios.post(`${CF7}contact-forms/179/feedback`, form)
         .then((res) => {
           this.name = "";
           this.phone = "";
