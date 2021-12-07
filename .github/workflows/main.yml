@@ -8,10 +8,10 @@ jobs:
     - name: 🚚 Get latest code
       uses: actions/checkout@v2.3.2
 
-    - name: Use Node.js 12
+    - name: Use Node.js 14
       uses: actions/setup-node@v2-beta
       with:
-        node-version: '12'
+        node-version: '14'
       
     - name: 🔨 Build Project
       run: |
@@ -21,13 +21,13 @@ jobs:
     - name: 📂 Sync files
       uses: SamKirkland/FTP-Deploy-Action@4.0.0
       with:
-        server: 31.31.196.197
+        server: 92.53.96.242
         port: 21
         protocol: ftp
-        username: u0470484
+        username: cg28561
         password: ${{ secrets.FTP_PASSWORD }}
         local-dir: ./dist/
-        server-dir: /daf.webink.site/dist/
+        server-dir: /ooodaf.ru/public_html/dist/
         
     # - name: send message to tg
     #   uses: appleboy/telegram-action@master
