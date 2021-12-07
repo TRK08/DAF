@@ -1017,7 +1017,6 @@ button.transparent-btn:hover {
   display: flex;
   flex-direction: column;
   justify-content: space-between;
-  align-items: center;
 }
 
 .technique-catalog-item__info h4 {
