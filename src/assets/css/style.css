@@ -101,12 +101,12 @@ button.transparent-btn:hover {
 }
 
 .objects-page-slider__wrap .swiper-wrapper {
-  position: static!important;
+  /* position: static!important; */
 }
 
 .swiper-prev,
 .swiper-next {
-  position: fixed;
+  position: absolute;
   background-color:  rgba(38, 38, 38, .7)!important;
   width: 50px!important;
   height: 50px!important;
