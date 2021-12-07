@@ -27,7 +27,7 @@ jobs:
         username: cg28561
         password: ${{ secrets.FTP_PASSWORD }}
         local-dir: ./dist/
-        server-dir: /ooodaf.ru/public_html/dist
+        server-dir: /ooodaf.ru/public_html/dist/
         
     # - name: send message to tg
     #   uses: appleboy/telegram-action@master
