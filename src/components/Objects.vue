@@ -5,18 +5,25 @@
         <h2><span class="orange-line"></span>Наши объекты</h2>
         <div class="objects-items" v-if="objects">
           <div
-            class="object-item"
-            v-for="item in objects"
+            class="object-item image"
+            v-for="(item, i) in objects"
             :key="item.id"
             :style="{ 'background-image': 'url(' + item.img + ')' }"
-            @click="open(item.img)"
+            @click="index = i"
           >
             <span> {{ item.name }} </span>
           </div>
         </div>
       </div>
     </div>
-    <div class="objects-popup" v-show="isOpen" @click="close">
+    <CoolLightBox
+      :items="items"
+      :index="index"
+      @close="index = null"
+      mediaType="image"
+    >
+    </CoolLightBox>
+    <!-- <div class="objects-popup" v-show="isOpen" @click="close">
       <div class="container">
         <div class="objects-popup__wrap" @click.stop>
           <div class="objects-popup__close" @click="close">
@@ -25,7 +32,7 @@
           <img :src="imgPreview" alt="" />
         </div>
       </div>
-    </div>
+    </div> -->
   </section>
 </template>
 
@@ -37,6 +44,8 @@ export default {
     return {
       imgPreview: "",
       isOpen: false,
+      items: [],
+      index: null,
     };
   },
   methods: {
@@ -48,6 +57,17 @@ export default {
     close() {
       this.isOpen = false;
       document.body.style.overflowY = "scroll";
+    },
+  },
+  watch: {
+    index(val) {
+      console.log(val);
+      // this.items = this.objects[this.index].gallery;
+      if (val !== null) {
+        this.items = this.objects[val].gallery;
+      } else {
+        this.index = null;
+      }
     },
   },
   computed: {

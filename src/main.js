@@ -10,6 +10,8 @@ import VueScrollTo from 'vue-scrollto'
 import VueTyperPlugin from 'vue-typer'
 import VCalendar from 'v-calendar';
 import YmapPlugin from 'vue-yandex-maps'
+import CoolLightBox from 'vue-cool-lightbox'
+import 'vue-cool-lightbox/dist/vue-cool-lightbox.min.css'
 // import VueLazyload from 'vue-lazyload'
 
 
@@ -32,6 +34,7 @@ Vue.use(VueTheMask)
 
 Vue.use(VCalendar)
 Vue.use(YmapPlugin, settings)
+Vue.use(CoolLightBox)
 
 
 // Vue.use(VueLazyload, {
