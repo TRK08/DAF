@@ -9,11 +9,11 @@
           <div class="header-contacts" v-if="contacts">
             <div class="header-contacts-item">
               <img src="../../assets/img/phone-icon.svg" alt="" />
-              <a :href="`tel:${contacts.fphone}`"> {{ contacts.fphone }} </a>
+              <a :href="`tel:${contacts.phone}`"> {{ contacts.phone }} </a>
             </div>
             <div class="header-contacts-item">
               <img src="../../assets/img/phone-icon.svg" alt="" />
-              <a :href="`tel:${contacts.phone}`"> {{ contacts.phone }} </a>
+              <a :href="`tel:${contacts.fphone}`"> {{ contacts.fphone }} </a>
             </div>
             <div class="header-contacts-item">
               <img src="../../assets/img/email-icon.svg" alt="" />
@@ -69,13 +69,15 @@
               <div class="mobile-contacts" v-if="contacts">
                 <div class="mobile-contacts-item">
                   <img src="../../assets/img/phone-icon.svg" alt="" />
-                  <a :href="`tel:${contacts.fphone}`">
-                    {{ contacts.fphone }}
+                  <a :href="`tel:${contacts.phone}`">
+                    {{ contacts.phone }}
                   </a>
                 </div>
                 <div class="mobile-contacts-item">
                   <img src="../../assets/img/phone-icon.svg" alt="" />
-                  <a :href="`tel:${contacts.phone}`"> {{ contacts.phone }} </a>
+                  <a :href="`tel:${contacts.fphone}`">
+                    {{ contacts.fphone }}
+                  </a>
                 </div>
                 <div class="mobile-contacts-item">
                   <img src="../../assets/img/email-icon.svg" alt="" />

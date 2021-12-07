@@ -718,6 +718,12 @@ button.transparent-btn:hover {
 
 .single-services-slide {
   margin-right: 0 !important;
+  height: 400px!important;
+}
+
+.single-services-slide img {
+  height: 100%;
+  object-fit: cover;
 }
 
 .single-services-item__block-text h3 {

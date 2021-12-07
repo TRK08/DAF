@@ -46,11 +46,11 @@
           <h3>Контакты</h3>
           <div class="footer-contacts-item">
             <img src="../../assets/img/phone-icon.svg" alt="" />
-            <a :href="`tel:${contacts.fphone}`"> {{ contacts.fphone }} </a>
+            <a :href="`tel:${contacts.phone}`"> {{ contacts.phone }} </a>
           </div>
           <div class="footer-contacts-item">
             <img src="../../assets/img/phone-icon.svg" alt="" />
-            <a :href="`tel:${contacts.phone}`"> {{ contacts.phone }} </a>
+            <a :href="`tel:${contacts.fphone}`"> {{ contacts.fphone }} </a>
           </div>
           <div class="footer-contacts-item">
             <img src="../../assets/img/email-icon.svg" alt="" />
