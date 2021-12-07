@@ -4,7 +4,11 @@
       <div class="vehicles__wrap">
         <h2><span class="orange-line"></span>Наша техника</h2>
         <div class="vehicles-items" v-if="vehicles">
-          <div class="vehicles-item" v-for="item in vehicles" :key="item.id">
+          <div
+            class="vehicles-item"
+            v-for="item in vehicles.slice(0, 6)"
+            :key="item.id"
+          >
             <div class="vehicles-item-text">
               <h3>{{ item.name }}</h3>
             </div>
