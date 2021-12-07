@@ -17,10 +17,7 @@
       >
         <div class="container">
           <span class="orange-line"></span>
-          <h3>
-            Выполнение работ по ремонту автомобильных дорог общего пользования
-            федерального значения
-          </h3>
+          <h3 v-html="object.descr"></h3>
           <div class="objects-page-item-points">
             <div
               class="objects-page-item-point"

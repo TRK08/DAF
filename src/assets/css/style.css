@@ -100,9 +100,13 @@ button.transparent-btn:hover {
 	margin-right: 20px;
 }
 
+.objects-page-slider__wrap .swiper-wrapper {
+  position: static!important;
+}
+
 .swiper-prev,
 .swiper-next {
-  position: absolute;
+  position: fixed;
   background-color:  rgba(38, 38, 38, .7)!important;
   width: 50px!important;
   height: 50px!important;
@@ -952,10 +956,13 @@ button.transparent-btn:hover {
 
 .technique-catalog-tabs {
   margin: 20px 0 70px;
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(230px, 1fr));
+  gap: 20px;
 }
 
 .technique-catalog-tabs button {
-  padding: 10px 30px;
+  padding: 10px;
   background-color: #d6d6d6;
   transition: all 0.5s ease;
   color: var(--dark);
@@ -972,9 +979,9 @@ button.transparent-btn:hover {
   box-shadow: 0px 4px 13px 8px rgba(234, 135, 69, 0.15);
 }
 
-.technique-catalog-tabs button:not(:last-child) {
+/* .technique-catalog-tabs button:not(:last-child) {
   margin-right: 20px;
-}
+} */
 
 .technique-catalog-items {
   display: grid;
