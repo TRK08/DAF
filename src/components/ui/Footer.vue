@@ -36,7 +36,7 @@
               v-for="item in services"
               :key="item.id"
               tag="li"
-              to="/"
+              :to="`/uslugi/${item.slug}`"
             >
               {{ item.title }}
             </router-link>

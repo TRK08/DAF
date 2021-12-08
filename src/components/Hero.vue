@@ -36,6 +36,10 @@ export default {
   height: 100%;
   min-height: 100vh;
   overflow: hidden;
+  background-image: url("../assets/img/hero-bg.png");
+  background-repeat: no-repeat;
+  background-size: cover;
+  background-position: center center;
 }
 
 .hero__wrap {
@@ -71,5 +75,11 @@ export default {
   border-width: 0;
   outline-width: 0;
   z-index: 1;
+}
+
+@media (max-width: 512px) {
+  .hero-bg-video {
+    display: none;
+  }
 }
 </style>

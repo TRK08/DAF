@@ -40,13 +40,13 @@ export default {
   cursor: pointer;
   font-weight: 600;
   border-bottom: 1px solid #000;
-  /* text-decoration: underline; */
 }
 
 .breadcrumb__wrap span:last-child {
   font-weight: 400;
   border: none;
   pointer-events: none;
+  line-height: 20px;
 }
 
 .breadcrumb__wrap small {

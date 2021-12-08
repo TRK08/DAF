@@ -19,19 +19,23 @@
 </template>
 
 <script>
-import { mapActions } from "vuex";
+import { mapActions, mapGetters } from "vuex";
 export default {
   name: "Questions",
   data() {
     return {
       popupData: [
         {
-          title: "Аренда техники",
-          isActive: false,
+          title: "Строительство дорог",
+          isActive: true,
         },
         {
           title: "Благоустройство территорий",
-          isActive: true,
+          isActive: false,
+        },
+        {
+          title: "Аренда техники",
+          isActive: false,
         },
       ],
     };
@@ -40,6 +44,26 @@ export default {
     ...mapActions({
       setMode: "popup/TAKE_POPUP_MODE",
     }),
+  },
+  computed: {
+    ...mapGetters({
+      services: "info/getServices",
+    }),
+    // setServices() {
+    //   let popupData = [];
+    //   this.services.map((item) => {
+    //     popupData.push({
+    //       title: item.title,
+    //       isActive: false,
+    //     });
+
+    //     popupData[0].isActive = true;
+
+    //     console.log(popupData);
+
+    //     return popupData;
+    //   });
+    // },
   },
 };
 </script>
