@@ -31,6 +31,7 @@ export default {
     this.$store.dispatch("info/LOAD_VEHICLES");
     this.$store.dispatch("info/LOAD_VEHICLES_CATEGORY");
     this.$store.dispatch("info/LOAD_VACANCIES");
+    this.$store.dispatch("info/LOAD_ABOUT_INFO");
   },
 };
 </script>

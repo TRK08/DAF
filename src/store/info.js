@@ -1,5 +1,5 @@
 import axios from 'axios';
-import {API} from '../config'
+import { API } from '../config'
 
 const info = {
   namespaced: true,
@@ -14,6 +14,7 @@ const info = {
     vehicles: null,
     vehiclesCategory: null,
     vacancies: null,
+    aboutInfo: null
   },
   mutations: {
     SET_MENU(state, payload) {
@@ -45,6 +46,9 @@ const info = {
     },
     SET_VACANCIES(state, payload) {
       state.vacancies = payload
+    },
+    SET_ABOUT_INFO(state, payload) {
+      state.aboutInfo = payload
     }
   },
   actions: {
@@ -115,6 +119,14 @@ const info = {
       }).catch(err => {
         console.log(err, 'load vacancies error');
       })
+    },
+    LOAD_ABOUT_INFO({ commit }) {
+      axios.get(`${API}get/about`).then(res => {
+        console.log(res.data.data.blocks);
+        commit("SET_ABOUT_INFO", res.data.data.blocks)
+      }).catch(err => {
+        console.log(err, 'load about info error');
+      })
     }
   },
   getters: {
@@ -171,6 +183,9 @@ const info = {
       if (state.services) {
         return state.services.find(item => item.slug === slug)
       }
+    },
+    getAboutInfo(state) {
+      return state.aboutInfo
     }
   },
 }
