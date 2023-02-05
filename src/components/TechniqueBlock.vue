@@ -45,7 +45,7 @@
             <img :src="item.img" alt="" />
             <div class="technique-catalog-item__info">
               <div class="technique-catalog-item__text">
-                <h4>{{ item.name }}</h4>
+                <h4>{{ item.name[lang] }}</h4>
                 <div class="technique-catalog-item-feauture">
                   <div v-for="info in item.specs" :key="info.nazvanie">
                     <span> {{ info.nazvanie }} </span>

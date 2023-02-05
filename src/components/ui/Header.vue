@@ -30,11 +30,14 @@
               :to="`/${item.slug}`"
               v-for="item in menu"
               :key="item.ID"
-              >{{ item.title }}
+              >{{ item.title[lang] }}
             </router-link>
           </ul>
         </div>
-        <div class="header-info-burger" @click="isOpen = !isOpen">
+        <select class="lang hidden-md hidden-lg" v-model="langVal" @change="changeLang()">
+              <option :value="lng" v-for="(lng, i) in languages">{{lng}}</option>
+            </select>
+          <div class="header-info-burger" @click="isOpen = !isOpen">
           <span></span>
           <span></span>
           <span></span>
@@ -66,7 +69,7 @@
                   :to="`/${item.slug}`"
                   v-for="item in menu"
                   :key="item.ID"
-                  >{{ item.title }}
+                  >{{ item.title[lang] }}
                 </router-link>
               </ul>
               <div class="mobile-contacts" v-if="contacts">
@@ -88,11 +91,8 @@
                     {{ contacts.email }}
                   </a>
                 </div>
-                <select class="lang">
-                  <option :value="lng" v-for="(lng, i) in languages">{{lng}}</option>
-                </select>
               </div>
-              <button>Задать вопрос</button>
+              <button>{{lang === 'ru' ? 'Задать вопрос' : 'Ask Question'}}</button>
             </div>
           </div>
         </div>

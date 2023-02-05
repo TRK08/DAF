@@ -11,7 +11,7 @@
             :style="{ 'background-image': 'url(' + item.img + ')' }"
             @click="index = i"
           >
-            <span> {{ item.name }} </span>
+            <span> {{ item.name[lang] }} </span>
           </div>
         </div>
       </div>

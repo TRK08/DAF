@@ -24,7 +24,7 @@
               tag="li"
               :to="`/${item.slug}`"
             >
-              {{ item.title }}
+              {{ item.title[lang] }}
             </router-link>
           </ul>
         </div>

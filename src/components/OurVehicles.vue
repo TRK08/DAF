@@ -10,7 +10,7 @@
             :key="item.id"
           >
             <div class="vehicles-item-text">
-              <h3>{{ item.name }}</h3>
+              <h3>{{ item.name[lang] }}</h3>
             </div>
             <div class="vehicles-item-img">
               <img :src="item.img" alt="" />

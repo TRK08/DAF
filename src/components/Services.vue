@@ -18,8 +18,8 @@
             :key="item.id"
           >
             <div class="services-item-text">
-              <h3>{{ item.title }}</h3>
-              <p>{{ item.subtext }}</p>
+              <h3>{{ item.title[lang] }}</h3>
+              <p>{{ item.subtext[lang] }}</p>
             </div>
             <div class="services-item-img">
               <img :src="item.icon" alt="" />

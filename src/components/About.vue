@@ -9,8 +9,8 @@
           </div>
           <div class="about-item-text">
             <span class="orange-line"></span>
-            <h3>{{ item.nazvanie }}</h3>
-            <p v-html="item.opisanie"></p>
+            <h3>{{ lang === 'ru' ? item.nazvanie : item.nazvanie_en }}</h3>
+            <p v-html="lang === 'ru' ? item.opisanie : item.opisanie_en"></p>
           </div>
         </div>
       </div>
@@ -38,6 +38,7 @@ export default {
   computed: {
     ...mapGetters({
       info: "info/getAboutInfo",
+      lang: "info/getLang"
     }),
   },
 };

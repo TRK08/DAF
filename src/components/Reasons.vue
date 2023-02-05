@@ -13,8 +13,8 @@
             :key="item.nazvanie"
           >
             <img :src="item.ikonka" alt="" />
-            <h3>{{ item.nazvanie }}</h3>
-            <span> {{ item.tekst }} </span>
+            <h3>{{ lang === 'ru' ? item.nazvanie : item.nazvanie_en }}</h3>
+            <span> {{ lang === 'ru' ? item.tekst : item.tekst_en }} </span>
           </div>
         </div>
       </div>
