@@ -4,9 +4,10 @@
       <div class="container">
         <Breadcrumbs
           :cat="cat"
-          :subcat="{ slug: '', text: singleService.title }"
+          :subcat="{ slug: '', text: singleService.title[lang] }"
         />
-        <div v-html="singleService.text"></div>
+        <div style="color:#000;font-size: 14px;line-height: 21px!important;" v-html="singleService.text[lang]"></div>
+        
       </div>
       <div class="single-services-item__block">
         <div class="container">
@@ -34,13 +35,13 @@
             </div>
             <div class="single-services-item__block-text">
               <span class="orange-line"></span>
-              <h3>{{ singleService.subtext }}</h3>
+              <h3>{{ singleService.subtext[lang] }}</h3>
               <ul>
                 <li
                   v-for="(item, i) in singleService.sostavlyayushhie"
                   :key="i"
                 >
-                  {{ item.tekst }}
+                  {{ lang === "ru" ?  item.tekst : item.tekst_en }}
                 </li>
               </ul>
             </div>
@@ -85,6 +86,9 @@ export default {
     };
   },
   computed: {
+    ...mapGetters({
+      lang: "info/getLang"
+    }),
     swiper() {
       return this.$refs.mySwiper.$swiper;
     },

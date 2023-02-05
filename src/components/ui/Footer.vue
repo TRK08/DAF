@@ -37,7 +37,7 @@
               tag="li"
               :to="`/uslugi/${item.slug}`"
             >
-              {{ item.title }}
+              {{ item.title[lang] }}
             </router-link>
           </ul>
         </div>
@@ -57,7 +57,7 @@
           </div>
           <div class="footer-contacts-item footer-contacts-point">
             <img src="../../assets/img/point-icon.svg" alt="" />
-            <span> {{ contacts.adres_ofisa }} </span>
+            <span> {{ contacts.adres_ofisa[lang] }} </span>
           </div>
         </div>
       </div>

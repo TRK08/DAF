@@ -1,6 +1,6 @@
 <template>
   <div class="single-services" v-if="singleServices(id)">
-    <Banner :img="banner" :text="singleServices(id).title" />
+    <Banner :img="banner" :text="singleServices(id).title[lang]" />
     <SingleServicesItem :slug="id" :singleService="singleServices(id)" />
     <Questions />
     <OurPartners />
@@ -26,6 +26,7 @@ export default {
   computed: {
     ...mapGetters({
       singleServices: "info/getSingleServices",
+      lang: "info/getLang"
     }),
   },
   created() {},
