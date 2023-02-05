@@ -33,10 +33,9 @@
             :key="cat.term_id"
             @click="changeCategory(cat.term_id)"
           >
-            {{ cat.name }}
+            {{ cat.name[lang] }}
             
           </button>
-          <!-- <pre>{{category}}</pre> -->
         </div>
         <div class="technique-catalog-items">
           <div

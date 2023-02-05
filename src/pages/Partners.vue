@@ -6,7 +6,7 @@
       <div class="partners-page__wrap">
         <div class="partners-page-item" v-for="item in partners" :key="item.id">
           <img :src="item.img" alt="" />
-          <span> {{ item.name }} </span>
+          <span> {{ item.name[lang] }} </span>
         </div>
       </div>
     </div>

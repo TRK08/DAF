@@ -7,7 +7,7 @@
           <div class="img">
             <img src="../assets/img/vacancies.svg" alt="" />
           </div>
-          <h3>{{ item.name }}</h3>
+          <h3>{{ item.name[lang] }}</h3>
           <button @click="respond(item.name)">{{lang === 'ru' ? 'Откликнуться' : 'Reply'}}</button>
         </div>
       </div>
