@@ -21,10 +21,10 @@ jobs:
     - name: 📂 Sync files
       uses: SamKirkland/FTP-Deploy-Action@4.0.0
       with:
-        server: 92.53.96.242
+        server: vh374.timeweb.ru
         port: 21
         protocol: ftp
-        username: cg28561
+        username: cg28561_webink
         password: ${{ secrets.FTP_PASSWORD }}
         local-dir: ./dist/
         server-dir: /ooodaf.ru/public_html/dist/
