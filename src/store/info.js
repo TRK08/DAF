@@ -4,6 +4,7 @@ import { API } from '../config'
 const info = {
   namespaced: true,
   state: {
+    lang: 'ru',
     menu: null,
     contacts: null,
     reasons: null,
@@ -49,6 +50,9 @@ const info = {
     },
     SET_ABOUT_INFO(state, payload) {
       state.aboutInfo = payload
+    },
+    SET_LANG(state, lang){
+      state.lang = lang
     }
   },
   actions: {
@@ -127,6 +131,10 @@ const info = {
       }).catch(err => {
         console.log(err, 'load about info error');
       })
+    },
+    changeLang({commit}, lang){
+			localStorage.setItem("lang", JSON.stringify(lang));
+      commit("SET_LANG", lang)
     }
   },
   getters: {
@@ -186,6 +194,9 @@ const info = {
     },
     getAboutInfo(state) {
       return state.aboutInfo
+    },
+    getLang(state){
+      return state.lang
     }
   },
 }

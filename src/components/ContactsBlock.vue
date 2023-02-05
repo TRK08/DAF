@@ -5,13 +5,13 @@
       <div class="contacts__wrap">
         <div class="contacts-info" v-if="contacts">
           <div class="contacts-info-item">
-            <h3>Адрес</h3>
+            <h3>{{lang === 'ru' ? 'Адрес' : 'Address'}}</h3>
             <span
-              >Ленинградская область, г.Гатчина, ул. Чехова д.26, пом.4</span
+              >{{lang === 'ru' ? 'Ленинградская область, г.Гатчина, ул. Чехова д.26, пом.4' : 'Gatchina, Leningrad region, 26 Chekhov St., p.4.'}}</span
             >
           </div>
           <div class="contacts-info-item">
-            <h3>Телефоны</h3>
+            <h3>{{lang === 'ru' ? 'Телефоны' : 'Phones'}}</h3>
             <span
               ><img src="../assets/img/phone-icon.svg" alt="" />
               <a :href="`tel:${contacts.phone}`">
@@ -26,7 +26,7 @@
             >
           </div>
           <div class="contacts-info-item">
-            <h3>Почта</h3>
+            <h3>{{lang === 'ru' ? 'Почта' : 'E-mail'}}</h3>
             <span>
               <img src="../assets/img/email-icon.svg" alt="" />
               <a :href="`mailto:${contacts.email}`"> {{ contacts.email }} </a>
@@ -59,7 +59,10 @@ export default {
     return {
       cat: {
         slug: "/kontakty",
-        text: "Контакты",
+        text: {
+          ru: "Контакты",
+          en: "Contacts"
+        },
       },
       banner: require("../assets/img/objects-banner.png"),
       coords: [59.575128, 30.144389],
@@ -77,6 +80,7 @@ export default {
   computed: {
     ...mapGetters({
       contacts: "info/getContacts",
+      lang: "info/getLang",
     }),
   },
 };

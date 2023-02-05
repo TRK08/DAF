@@ -7,17 +7,16 @@
             <img src="../../assets/img/logo.png" alt="" />
           </div>
           <p>
-            Мы оказываем услуги как по строительству, ремонту, эксплуатации
-            дорог и искусственных сооружений, благоустройству территорий, так и
-            проектированию.
+            {{lang === 'ru' ? 'Мы оказываем услуги как по строительству, ремонту, эксплуатации дорог и искусственных сооружений, благоустройству территорий, так и проектированию.'
+            : 'We provide services both in construction, repair, operation of roads and artificial constructions, landscaping, and design.'}}
           </p>
           <div class="footer-info-nums">
-            <span>ИНН: 12321312515135</span>
-            <span>ОГРН: 23478304324</span>
+            <span>{{lang === 'ru' ? 'ИНН: 12321312515135' : 'INN: 12321312515135'}}</span>
+            <span>{{lang === 'ru' ? 'ОГРН: 23478304324' : 'REGISTRY NUMBER: 23478304324'}}</span>
           </div>
         </div>
         <div class="footer-menu" v-if="menu">
-          <h3>Меню</h3>
+          <h3>{{lang === 'ru' ? 'Меню' : 'Menu'}}</h3>
           <ul>
             <router-link
               v-for="item in menu"
@@ -30,7 +29,7 @@
           </ul>
         </div>
         <div class="footer-services" v-if="services">
-          <h3>Услуги</h3>
+          <h3>{{lang === 'ru' ? 'Услуги' : 'Services'}}</h3>
           <ul>
             <router-link
               v-for="item in services"
@@ -43,7 +42,7 @@
           </ul>
         </div>
         <div class="footer-contacts" v-if="contacts">
-          <h3>Контакты</h3>
+          <h3>{{lang === 'ru' ? 'Контакты' : 'Contacts'}}</h3>
           <div class="footer-contacts-item">
             <img src="../../assets/img/phone-icon.svg" alt="" />
             <a :href="`tel:${contacts.phone}`"> {{ contacts.phone }} </a>
@@ -74,6 +73,7 @@ export default {
     ...mapGetters({
       menu: "info/getMenu",
       services: "info/getServices",
+      lang: "info/getLang",
       contacts: "info/getContacts",
     }),
   },

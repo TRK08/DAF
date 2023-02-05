@@ -14,8 +14,15 @@ import CoolLightBox from 'vue-cool-lightbox'
 import 'vue-cool-lightbox/dist/vue-cool-lightbox.min.css'
 // import VueLazyload from 'vue-lazyload'
 
-
 import 'swiper/css/swiper.css'
+
+
+const lang = JSON.parse(localStorage.getItem("lang"))
+if(!lang){
+  store.dispatch("info/changeLang", 'ru');
+}else{
+  store.dispatch("info/changeLang", lang);
+}
 
 const settings = {
   apiKey: 'e422ee4c-d64b-4823-81cd-e3460e50f7d4',

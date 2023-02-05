@@ -1,6 +1,6 @@
 <template>
   <div class="services-page">
-    <Banner :img="banner" text="Услуги" />
+    <Banner :img="banner" :text="lang === 'ru' ? 'Услуги' : 'Services'" />
     <Services />
     <Objects />
     <Questions />
@@ -14,6 +14,7 @@ import Questions from "../components/Questions.vue";
 import Services from "../components/Services.vue";
 import OurPartners from "../components/OurPartners.vue";
 import Banner from "../components/ui/Banner.vue";
+import { mapGetters } from 'vuex';
 export default {
   components: { Services, Objects, Questions, OurPartners, Banner },
   name: "ServicesPage",
@@ -22,6 +23,11 @@ export default {
       banner: require("../assets/img/banner.png"),
     };
   },
+  computed: {
+    ...mapGetters({
+      lang: "info/getLang",
+    })
+  }
 };
 </script>
 

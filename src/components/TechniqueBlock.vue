@@ -4,33 +4,28 @@
       <Breadcrumbs :cat="cat" />
       <div class="technique__wrap">
         <span class="orange-line"></span>
-        <h3>Преимущества аренды в ООО"ДАФ" :</h3>
+        <h3>{{lang === 'ru' ? 'Преимущества аренды в ООО"ДАФ"' : 'Rental advantages in LLC "DAF"'}} :</h3>
         <p>
-          В компании ООО " ДАФ", вы можете взять в аренду всю необходимую
-          технику для осуществления дорожно-строительных и погрузочных работ на
-          выгодных условиях. Перечень имеющейся в наличии техники позволяет
-          удовлетворить потребности многочисленных клиентов. Вся наша техника
-          проходит регулярную диагностику, поэтому мы можем ручаться за
-          идеальное техническое состояние.
+          {{lang === 'ru' ? 'В компании ООО " ДАФ", вы можете взять в аренду всю необходимую технику для осуществления дорожно-строительных и погрузочных работ на выгодных условиях. Перечень имеющейся в наличии техники позволяет удовлетворить потребности многочисленных клиентов. Вся наша техника проходит регулярную диагностику, поэтому мы можем ручаться за идеальное техническое состояние.' : 'At the company LLC "DAF", you can rent all the necessary equipment for the implementation of road construction and loading operations on favorable terms. The list of available equipment allows us to satisfy the needs of numerous customers. All our machines are regularly checked, so we can vouch for their perfect technical condition.'}}
         </p>
         <div class="technique__wrap-text">
-          <span>Вся техника в хорошем состоянии</span>
-          <span>Возможность круглосуточной аренды</span>
-          <span>Выгодные условия аренды</span>
-          <span>Своевременная доставка по СПб и ЛО</span>
-          <span>Хорошие цены</span>
-          <span>Индивидуальные условия с постоянными клиентами</span>
+          <span>{{lang === 'ru' ? 'Вся техника в хорошем состоянии' : 'All machines are in good condition'}}</span>
+          <span>{{lang === 'ru' ? 'Возможность круглосуточной аренды' : 'Round-the-clock availability'}}</span>
+          <span>{{lang === 'ru' ? 'Выгодные условия аренды' : 'Favourable rental conditions'}}</span>
+          <span>{{lang === 'ru' ? 'Своевременная доставка по СПб и ЛО' : 'Timely delivery in St. Petersburg and Leningrad region'}}</span>
+          <span>{{lang === 'ru' ? 'Хорошие цены' : 'Good prices'}}</span>
+          <span>{{lang === 'ru' ? 'Индивидуальные условия с постоянными клиентами' : 'Individual terms with long term clients'}}</span>
         </div>
       </div>
       <div class="technique-catalog">
         <span class="orange-line"></span>
-        <h3>Каталог техники</h3>
+        <h3>{{lang === 'ru' ? 'Каталог техники' : 'Equipment catalog'}}</h3>
         <div class="technique-catalog-tabs">
           <button
             :class="{ active: !activeCatId }"
             @click="changeCategory(null)"
           >
-            Вся техника
+            {{lang === 'ru' ? 'Вся техника' : 'All machinery'}}
           </button>
           <button
             :class="{ active: cat.isActive }"
@@ -58,7 +53,7 @@
                   </div>
                 </div>
               </div>
-              <button @click="rentTechnique(item)">Арендовать</button>
+              <button @click="rentTechnique(item)">{{lang === 'ru' ? 'Арендовать' : 'Rent'}}</button>
             </div>
           </div>
         </div>
@@ -77,7 +72,10 @@ export default {
     return {
       cat: {
         slug: "/tehnika",
-        text: "Спецтехника",
+        text: {
+          ru: "Спецтехника",
+          en: "Special machinery"
+        },
       },
       activeCatId: null,
       filteredTechnique: [],
@@ -132,6 +130,7 @@ export default {
     ...mapGetters({
       category: "info/getVehiclesCategory",
       singleCat: "info/getSingleCatTechnique",
+      lang: "info/getLang",
     }),
   },
   created() {},

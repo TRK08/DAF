@@ -71,7 +71,7 @@ export default {
     return {
       cat: {
         slug: "/uslugi",
-        text: "Услуги",
+        text: {ru: "Услуги", en: "Services"},
       },
       swiperOptions: {
         slidesPerView: 1,

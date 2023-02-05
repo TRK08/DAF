@@ -28,7 +28,10 @@ export default {
     return {
       cat: {
         slug: "/about",
-        text: "О компании",
+        text: {
+          ru: "О компании",
+          en: "About the company"
+        },
       },
     };
   },

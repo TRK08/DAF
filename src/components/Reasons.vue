@@ -5,7 +5,7 @@
         <div class="reasons-items">
           <div class="reasons-big-text">
             <div class="reasons-big-text__number">5</div>
-            <div class="reasons-big-text__text">Причин работать с нами</div>
+            <div class="reasons-big-text__text">{{ lang === 'ru' ? 'Причин работать с нами' : 'Reasons to work with us' }}</div>
           </div>
           <div
             class="reasons-item"
@@ -29,6 +29,7 @@ export default {
   computed: {
     ...mapGetters({
       reasons: "info/getReasons",
+      lang: "info/getLang"
     }),
   },
 };

@@ -1115,6 +1115,24 @@ button.transparent-btn:hover {
 }
 
 
+.lang{
+  background-color: transparent;
+  padding: 6px 10px 6px 30px;
+  text-transform: uppercase;
+  border: none;
+  background-image: url('../img/lang.svg');
+  background-size: 20px;
+  background-position: left 2px center;
+  background-repeat: no-repeat;
+  font-weight: 500;
+}
+
+/* Remove outline on the forms and links */ 
+:active, :hover, :focus { 
+  outline: 0; 
+  outline-offset: 0; 
+}
+
 /* .vacancies-item__wrap {
   display: grid;
   grid-template-columns: 3fr 2fr;

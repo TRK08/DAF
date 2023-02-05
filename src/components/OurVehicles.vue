@@ -2,7 +2,7 @@
   <section class="vehicles">
     <div class="container">
       <div class="vehicles__wrap">
-        <h2><span class="orange-line"></span>Наша техника</h2>
+        <h2><span class="orange-line"></span>{{ lang === 'ru' ? 'Наша техника' : 'Our technique' }}</h2>
         <div class="vehicles-items" v-if="vehicles">
           <div
             class="vehicles-item"
@@ -18,7 +18,7 @@
           </div>
         </div>
         <router-link class="orange-btn" tag="button" to="/tehnika"
-          >Подробнее</router-link
+          >{{ lang === 'ru' ? 'Подробнее' :  'More'}}</router-link
         >
       </div>
     </div>
@@ -32,6 +32,7 @@ export default {
   computed: {
     ...mapGetters({
       vehicles: "info/getVehicles",
+      lang: "info/getLang"
     }),
   },
 };

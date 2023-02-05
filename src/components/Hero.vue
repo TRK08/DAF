@@ -13,19 +13,25 @@
     </div>
     <div class="container">
       <div class="hero__wrap">
-        <h1>Строительство дорог и даже больше!</h1>
-        <p>Надежность, качество, стабильность, профессионализм и уважение!</p>
-        <router-link class="transparent-btn" to="/uslugi" tag="button"
-          >Подробнее</router-link
-        >
+        <h1>{{ lang === 'ru' ? 'Строительство дорог и даже больше!' : 'Construction of roads and more!' }}</h1>
+        <p>{{ lang === 'ru' ? 'Надежность, качество, стабильность, профессионализм и уважение!' : 'Reliability, quality, stability, professionalism and respect!' }}</p>
+        <router-link class="transparent-btn" to="/uslugi" tag="button">
+        {{ lang === 'ru' ? 'Подробнее' : 'More' }}
+        </router-link>
       </div>
     </div>
   </section>
 </template>
 
 <script>
+import { mapGetters } from 'vuex';
 export default {
   name: "Hero",
+  computed: {
+    ...mapGetters({
+      lang: "info/getLang"
+    })
+  }
 };
 </script>
 

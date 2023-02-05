@@ -7,15 +7,15 @@
         @click="setMode({ mode: null })"
         src="../../assets/img/close-icon.svg"
       />
-      <h3>Наши менеджеры ответят в течении 15 минут</h3>
-      <small>А также проконсультируют по всем интересующим вопросам</small>
+      <h3>{{lang === 'ru' ? 'Наши менеджеры ответят в течении 15 минут' : 'Our managers will answer within 15 minutes'}}</h3>
+      <small>{{lang === 'ru' ? 'А также проконсультируют по всем интересующим вопросам' : 'They will also advise on all matters of interest'}}</small>
       <form @submit.prevent="sendForm">
         <div class="popup-form__item">
-          <label for="name">Ваше имя:</label>
-          <input placeholder="имя" v-model="name" id="name" type="text" />
+          <label for="name">{{lang === 'ru' ? 'Ваше имя:' : 'Your name:'}}</label>
+          <input :placeholder="lang === 'ru' ? 'имя' : 'name'" v-model="name" id="name" type="text" />
         </div>
         <div class="popup-form__item">
-          <label for="phone">Ваш телефон:</label>
+          <label for="phone">{{lang === 'ru' ? 'Ваш телефон:' : 'Your phone:'}}</label>
           <input
             v-mask="'+7 (###) ###-##-##'"
             v-model="phone"
@@ -26,7 +26,7 @@
           />
         </div>
         <div class="popup-form__item">
-          <label for="theme">Тема:</label>
+          <label for="theme">{{lang === 'ru' ? 'Тема:' : 'Subject:'}}</label>
           <select name="" id="theme" v-model="theme">
             <option
               v-for="item in popupData"
@@ -44,7 +44,7 @@
           @click="isLoading = !isLoading"
         >
           <span class="load-spinner" v-if="isLoading"></span>
-          <span v-else>Отправить</span>
+          <span v-else>{{lang === 'ru' ? 'Отправить' : 'Submit'}}</span>
         </button>
       </form>
     </div>
@@ -122,6 +122,7 @@ export default {
   },
   computed: {
     ...mapGetters({
+      lang: "info/getLang",
       mode: "popup/getPopupMode",
       popupData: "popup/getPopupData",
     }),

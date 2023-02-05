@@ -2,13 +2,13 @@
   <section class="questions">
     <div class="container">
       <div class="questions__wrap">
-        <h2>Остались вопросы?</h2>
-        <p>Задайте их нашим менеджерам!</p>
+        <h2>{{lang === 'ru' ? 'Остались вопросы?' : 'Still have questions?'}}</h2>
+        <p>{{lang === 'ru' ? 'Задайте их нашим менеджерам!' : 'Ask our managers!'}}</p>
         <button
           class="transparent-btn"
           @click="setMode({ mode: true, data: popupData })"
         >
-          Задать вопрос
+          {{ lang === 'ru' ? 'Задать вопрос' :  'Ask Question'}}
         </button>
         <div class="questions-man">
           <img src="../assets/img/questions-man.png" alt="" />
@@ -48,6 +48,7 @@ export default {
   computed: {
     ...mapGetters({
       services: "info/getServices",
+      lang: "info/getLang"
     }),
     // setServices() {
     //   let popupData = [];

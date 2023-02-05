@@ -1,6 +1,6 @@
 <template>
   <div class="partners-page">
-    <Banner :img="banner" text="Партнеры" />
+    <Banner :img="banner" :text="lang === 'ru' ? 'Партнеры' : 'Partners'" />
     <Breadcrumbs :cat="cat" />
     <div class="container">
       <div class="partners-page__wrap">
@@ -25,13 +25,17 @@ export default {
       banner: require("../assets/img/banner.png"),
       cat: {
         slug: "/partnery",
-        text: "Партнеры",
+        text: {
+          ru: "Партнеры",
+          en: "Partners"
+        },
       },
     };
   },
   computed: {
     ...mapGetters({
       partners: "info/getPartners",
+      lang: "info/getLang",
     }),
   },
 };

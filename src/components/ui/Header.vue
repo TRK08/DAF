@@ -19,6 +19,9 @@
               <img src="../../assets/img/email-icon.svg" alt="" />
               <a :href="`mailto:${contacts.email}`"> {{ contacts.email }} </a>
             </div>
+            <select class="lang" v-model="langVal" @change="changeLang()">
+              <option :value="lng" v-for="(lng, i) in languages">{{lng}}</option>
+            </select>
           </div>
           <ul class="header-menu" v-if="menu">
             <router-link
@@ -85,6 +88,9 @@
                     {{ contacts.email }}
                   </a>
                 </div>
+                <select class="lang">
+                  <option :value="lng" v-for="(lng, i) in languages">{{lng}}</option>
+                </select>
               </div>
               <button>Задать вопрос</button>
             </div>
@@ -102,9 +108,14 @@ export default {
   data() {
     return {
       isOpen: false,
+      languages: ['ru', 'en'],
+      langVal: null
     };
   },
   watch: {
+    lang(){
+      this.langVal = this.lang
+    },
     $route(to, from) {
       this.isOpen = false;
       document.body.style.overflow = "auto";
@@ -117,10 +128,19 @@ export default {
       }
     },
   },
+  methods: {
+    changeLang(){
+      this.$store.dispatch("info/changeLang", this.langVal);
+    }
+  },
+  created(){
+    this.langVal = this.lang
+  },
   computed: {
     ...mapGetters({
       menu: "info/getMenu",
       contacts: "info/getContacts",
+      lang: "info/getLang"
     }),
   },
 };

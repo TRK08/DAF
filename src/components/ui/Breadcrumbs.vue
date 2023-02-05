@@ -2,9 +2,9 @@
   <div class="breadcrumbs">
     <div class="container">
       <div class="breadcrumb__wrap">
-        <router-link tag="span" to="/">Главная</router-link>
+        <router-link tag="span" to="/">{{lang === 'ru' ? 'Главная' : 'Home'}}</router-link>
         <small>/</small>
-        <router-link tag="span" :to="cat.slug">{{ cat.text }}</router-link>
+        <router-link tag="span" :to="cat.slug">{{ cat.text[lang] }}</router-link>
         <small v-if="subcat">/</small>
         <router-link v-if="subcat" tag="span" :to="subcat.slug">
           {{ subcat.text }}
@@ -15,8 +15,14 @@
 </template>
 
 <script>
+import { mapGetters } from 'vuex';
 export default {
   name: "Breadcrumbs",
+  computed: {
+    ...mapGetters({
+      lang: "info/getLang",
+    })
+  },
   props: {
     cat: {
       type: Object,

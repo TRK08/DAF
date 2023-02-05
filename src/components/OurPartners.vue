@@ -2,7 +2,7 @@
   <section class="partners">
     <div class="container">
       <div class="partners__wrap">
-        <h2><span class="orange-line"></span>Наши партнеры и заказчики</h2>
+        <h2><span class="orange-line"></span>{{lang === 'ru' ? 'Наши партнеры и заказчики' : 'Our partners and customers'}}</h2>
         <div class="swiper-pagination"></div>
         <swiper class="partners-slider" ref="mySwiper" :options="swiperOptions">
           <swiper-slide
@@ -58,6 +58,7 @@ export default {
   computed: {
     ...mapGetters({
       partners: "info/getPartners",
+      lang: "info/getLang"
     }),
     swiper() {
       return this.$refs.mySwiper.$swiper;

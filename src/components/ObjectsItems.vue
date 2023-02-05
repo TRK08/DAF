@@ -65,7 +65,10 @@ export default {
     return {
       cat: {
         slug: "/objects",
-        text: "Объекты",
+        text: {
+          ru: "Объекты",
+          en: "Objects"
+        },
       },
       swiperOptions: {
         slidesPerView: 3,
@@ -92,6 +95,7 @@ export default {
   computed: {
     ...mapGetters({
       objects: "info/getObjects",
+      lang: "info/getLang",
     }),
     swiper() {
       return this.$refs.mySwiper.$swiper;

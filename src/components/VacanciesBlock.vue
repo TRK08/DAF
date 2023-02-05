@@ -8,7 +8,7 @@
             <img src="../assets/img/vacancies.svg" alt="" />
           </div>
           <h3>{{ item.name }}</h3>
-          <button @click="respond(item.name)">Откликнуться</button>
+          <button @click="respond(item.name)">{{lang === 'ru' ? 'Откликнуться' : 'Reply'}}</button>
         </div>
       </div>
     </div>
@@ -25,7 +25,10 @@ export default {
     return {
       cat: {
         slug: "/vacancies",
-        text: "Вакансии",
+        text: {
+          ru: "Вакансии",
+          en: "Jobs"
+        },
       },
     };
   },
@@ -53,6 +56,7 @@ export default {
   computed: {
     ...mapGetters({
       vacancies: "info/getVacancies",
+      lang: "info/getLang",
     }),
   },
 };

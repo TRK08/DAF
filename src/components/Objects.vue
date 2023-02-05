@@ -2,7 +2,7 @@
   <section class="objects">
     <div class="container">
       <div class="objects__wrap">
-        <h2><span class="orange-line"></span>Наши объекты</h2>
+        <h2><span class="orange-line"></span>{{ lang === 'ru' ? 'Наши объекты' :  'Our sites'}}</h2>
         <div class="objects-items" v-if="objects">
           <div
             class="object-item image"
@@ -73,6 +73,7 @@ export default {
   computed: {
     ...mapGetters({
       objects: "info/getObjects",
+      lang: "info/getLang"
     }),
   },
 };

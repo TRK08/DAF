@@ -1,6 +1,6 @@
 <template>
   <div>
-    <Banner :img="banner" text="Спецтехника" />
+    <Banner :img="banner" :text="lang === 'ru' ? 'Спецтехника' : 'Special machinery'" />
     <TechniqueBlock />
     <Questions />
     <OurPartners />
@@ -16,6 +16,11 @@ import { mapGetters } from "vuex";
 export default {
   name: "Technique",
   components: { Questions, OurPartners, Banner, TechniqueBlock },
+  computed: {
+    ...mapGetters({
+      lang: "info/getLang",
+    })
+  },
   data() {
     return {
       banner: require("../assets/img/objects-banner.png"),
