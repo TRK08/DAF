@@ -50,7 +50,7 @@
                 <div class="technique-catalog-item-feauture">
                   <div v-for="info in item.specs" :key="info.nazvanie">
                     <span> {{lang === 'ru' ?  info.nazvanie : info.nazvanie_en }} </span>
-                    <span> {{ info.znacheniya }} </span>
+                    <span> {{lang === 'ru' ? info.znacheniya : info.znacheniya.replace(/\кг/g, 'kg').replace(/\мм/g, 'mm').replace(/\ч/g , 'h').replace(/\км/g , 'km').replace(/\л/g , 'l').replace(/\кВт/g , 'kW').replace(/\Гц/g , 'Hz').replace(/\т/g , 'ton').replace(/\с/g , 'sec').replace('об/мин', 'rpm').replace('гуsecениц', 'caterpillars').replace('куб.м', 'м³').replace('см', 'sm') }} </span>
                   </div>
                 </div>
               </div>
