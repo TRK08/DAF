@@ -4,6 +4,7 @@
       :cat="cat"
       :class="{ greyBreadcrubms: objects.length === 2 }"
     />
+    <!-- <pre>{{objects}}</pre> -->
     <div class="objects-page-items__wrap">
       <div
         class="objects-page-item"
@@ -17,7 +18,7 @@
       >
         <div class="container">
           <span class="orange-line"></span>
-          <h3 v-html="object.descr"></h3>
+          <h3 v-html="object.name[lang]"></h3>
           <div class="objects-page-item-points">
             <div
               class="objects-page-item-point"
@@ -25,7 +26,7 @@
               :key="i"
             >
               <img src="../assets/img/point-icon.svg" alt="" />
-              <span>{{ item.nazvanie }}</span>
+              <span>{{ lang === 'ru' ? item.nazvanie : item.nazvanie_en }}</span>
             </div>
           </div>
           <div class="objects-page-slider__wrap">

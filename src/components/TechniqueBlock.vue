@@ -34,7 +34,9 @@
             @click="changeCategory(cat.term_id)"
           >
             {{ cat.name }}
+            
           </button>
+          <!-- <pre>{{category}}</pre> -->
         </div>
         <div class="technique-catalog-items">
           <div
@@ -48,7 +50,7 @@
                 <h4>{{ item.name[lang] }}</h4>
                 <div class="technique-catalog-item-feauture">
                   <div v-for="info in item.specs" :key="info.nazvanie">
-                    <span> {{ info.nazvanie }} </span>
+                    <span> {{lang === 'ru' ?  info.nazvanie : info.nazvanie_en }} </span>
                     <span> {{ info.znacheniya }} </span>
                   </div>
                 </div>
